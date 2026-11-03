@@ -1,0 +1,185 @@
+/* ==========================================================================
+   accessibility.css - 웹 접근성 및 사용자 친화성 보조 스타일
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   터치 타깃 최소 70px 이상 규격 보장
+   -------------------------------------------------------------------------- */
+.touch-target,
+.btn-icon,
+.mode-tab-btn,
+.piece-rotate-btn,
+.piece-flip-btn,
+.stage-btn,
+.shape-piece-wrapper,
+.tangram-piece-element {
+  min-width: 70px !important;
+  min-height: 70px !important;
+}
+
+/* 터치 조작 시 유실 방지 터치 패딩 가상 영역 */
+.touch-padding-layer {
+  position: relative;
+}
+
+.touch-padding-layer::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 76px;
+  min-height: 76px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   키보드 포커스 링 (3px 고대비 외곽선)
+   -------------------------------------------------------------------------- */
+button:focus-visible,
+[tabindex="0"]:focus-visible,
+.shape-piece-wrapper:focus-visible,
+.tangram-piece-element:focus-visible {
+  outline: 3px solid #2563EB !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.3) !important;
+  z-index: 50 !important;
+}
+
+/* --------------------------------------------------------------------------
+   스크린 리더 전용 유틸리티
+   -------------------------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   고대비 모드 (High Contrast Mode)
+   -------------------------------------------------------------------------- */
+body.high-contrast {
+  --bg-gradient: #000000;
+  --panel-bg: #121212;
+  --panel-border: #FFFFFF;
+  --text-main: #FFFFFF;
+  --text-muted: #E2E8F0;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+body.high-contrast .app-header {
+  background: #000000;
+  border-bottom: 3px solid #FFFFFF;
+}
+
+body.high-contrast .brand-title {
+  color: #FFFF00;
+}
+
+body.high-contrast .mode-nav {
+  background: #1E293B;
+  border: 2px solid #FFFFFF;
+}
+
+body.high-contrast .mode-tab-btn {
+  color: #FFFFFF;
+}
+
+body.high-contrast .mode-tab-btn.active {
+  background: #FFFF00;
+  color: #000000;
+  border-color: #FFFF00;
+}
+
+body.high-contrast .btn-icon {
+  background: #1E293B;
+  border: 3px solid #FFFFFF;
+  color: #FFFFFF;
+}
+
+body.high-contrast .btn-icon:hover {
+  background: #FFFF00;
+  color: #000000;
+  border-color: #FFFF00;
+}
+
+body.high-contrast .game-board-panel,
+body.high-contrast .pieces-dock-panel {
+  background: #111827 !important;
+  border: 3px solid #FFFFFF !important;
+}
+
+body.high-contrast .shape-silhouette-slot,
+body.high-contrast .silhouette-guide-path {
+  stroke: #FFFFFF !important;
+  stroke-width: 4px !important;
+  stroke-dasharray: 8 6 !important;
+  fill: #1E293B !important;
+}
+
+body.high-contrast .tangram-piece-element svg polygon,
+body.high-contrast .tangram-piece-element svg rect {
+  stroke: #FFFFFF !important;
+  stroke-width: 4px !important;
+}
+
+body.high-contrast .modal-card {
+  background: #000000;
+  border: 5px solid #FFFF00;
+  color: #FFFFFF;
+}
+
+body.high-contrast .modal-title {
+  color: #FFFF00;
+}
+
+body.high-contrast .modal-message {
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   큰 글자 모드 (Large Text Mode)
+   -------------------------------------------------------------------------- */
+body.large-text {
+  font-size: 1.25rem;
+}
+
+body.large-text .brand-title {
+  font-size: 1.6rem;
+}
+
+body.large-text .mode-tab-btn {
+  font-size: 1.15rem;
+  padding: 10px 20px;
+}
+
+body.large-text .modal-title {
+  font-size: 2.1rem;
+}
+
+body.large-text .modal-message {
+  font-size: 1.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   움직임 감소 선호 (prefers-reduced-motion)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

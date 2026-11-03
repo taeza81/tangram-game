@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="100%" height="100%">
+  <!-- 정사각형 (대각선 80, 변 56.6) -->
+  <polygon points="45,5 85,45 45,85 5,45" fill="#FF922B" stroke="#D9480F" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="45,15 75,45 45,75 15,45" fill="#FFFFFF" opacity="0.25"/>
+</svg>

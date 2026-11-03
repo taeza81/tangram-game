@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- 반시계방향 45도 회전 -->
+  <path d="M3 12a9 9 0 1 0 9-9c-2.5 0-4.8 1-6.5 2.7L3 8"/>
+  <path d="M3 3v5h5"/>
+  <text x="12" y="15" font-size="7" font-weight="bold" fill="currentColor" stroke="none" text-anchor="middle">-45°</text>
+</svg>

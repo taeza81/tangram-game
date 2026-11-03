@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="고해상도 SVG 기반 칠교놀이 및 기본 도형 맞추기 인터랙티브 웹 애플리케이션">
+  <title>신나는 도형 &amp; 칠교놀이 (Tangram Fun)</title>
+
+  <!-- CSS 분리 구조 로드 -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+  <link rel="stylesheet" href="css/game-board.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/shapes/circle.svg">
+</head>
+<body>
+  <div id="app">
+    <!-- 상단 글로벌 헤더 -->
+    <header class="app-header" role="banner">
+      <div class="brand-title">
+        <img src="assets/shapes/triangle.svg" alt="칠교놀이 로고" class="brand-icon">
+        <span>칠교놀이 마스터</span>
+      </div>
+
+      <!-- 게임 모드 네비게이션 탭 -->
+      <nav class="mode-nav" role="tablist" aria-label="게임 모드 선택">
+        <button class="mode-tab-btn active" role="tab" aria-selected="true" data-mode="1" id="tab-mode-1">
+          <span class="mode-badge">1</span>
+          <span>기본 도형 맞추기</span>
+        </button>
+        <button class="mode-tab-btn" role="tab" aria-selected="false" data-mode="2" id="tab-mode-2">
+          <span class="mode-badge">2</span>
+          <span>1인 칠교놀이</span>
+        </button>
+        <button class="mode-tab-btn" role="tab" aria-selected="false" data-mode="3" id="tab-mode-3">
+          <span class="mode-badge">3</span>
+          <span>2인 분할 대결</span>
+        </button>
+      </nav>
+
+      <!-- 사용자 편의 & 접근성 제어 툴바 -->
+      <div class="header-controls">
+        <button id="btn-sound-toggle" class="btn-icon touch-target" title="효과음 켜기/끄기" aria-label="효과음 토글">
+          <img src="assets/ui/sound-on.svg" alt="소리">
+        </button>
+        <button id="btn-contrast-toggle" class="btn-icon touch-target" title="고대비 모드 전환" aria-label="고대비 모드 토글">
+          <span style="font-weight:900; font-size:1.1rem;">◐</span>
+        </button>
+        <button id="btn-font-toggle" class="btn-icon touch-target" title="큰 글자 모드 전환" aria-label="글자 크기 토글">
+          <span style="font-weight:900; font-size:1.1rem;">가+</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 게임 모드 컨테이너 뷰포트 -->
+    <main class="game-viewport" role="main">
+      <!-- 1단계: 기본 도형(동그라미/세모/네모) 짝 맞추기 -->
+      <section id="mode-1-container" class="game-mode-container active" aria-labelledby="tab-mode-1">
+      </section>
+
+      <!-- 2단계: 단일 플레이어 칠교 조각 맞추기 -->
+      <section id="mode-2-container" class="game-mode-container" aria-labelledby="tab-mode-2">
+      </section>
+
+      <!-- 3단계: 2인 플레이어 분할 화면 (멀티터치 동시 지원) -->
+      <section id="mode-3-container" class="game-mode-container" aria-labelledby="tab-mode-3">
+      </section>
+    </main>
+
+    <!-- 완료 축하 모달 다이얼로그 -->
+    <div id="celebration-modal" class="celebration-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-card">
+        <img src="assets/ui/trophy.svg" alt="트로피" class="modal-trophy">
+        <h2 id="modal-title" class="modal-title">🎉 대단해요!</h2>
+        <p id="modal-message" class="modal-message">모든 퍼즐 조각을 멋지게 완성했습니다!</p>
+        <div class="modal-actions">
+          <button id="modal-retry-btn" class="btn-secondary touch-target">다시 하기</button>
+          <button id="modal-next-btn" class="btn-primary touch-target">다음 단계 ➔</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 성공 폭죽 파티클 캔버스 -->
+    <canvas id="confetti-canvas"></canvas>
+  </div>
+
+  <!-- 자바스크립트 모듈 로드 -->
+  <script src="js/audio.js"></script>
+  <script src="js/tangram-data.js"></script>
+  <script src="js/drag-engine.js"></script>
+  <script src="js/mode1-basic.js"></script>
+  <script src="js/mode2-tangram.js"></script>
+  <script src="js/mode3-two-player.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="100%" height="100%">
+  <!-- 중간 삼각형 (직각 변 80, 80, 빗변 113.1) -->
+  <polygon points="5,5 85,5 5,85" fill="#6BCB77" stroke="#198754" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="12,12 75,12 12,75" fill="#FFFFFF" opacity="0.25"/>
+</svg>
